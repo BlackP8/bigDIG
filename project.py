@@ -1,3 +1,3 @@
-from main import point_gen
+from main import main
 
-print(point_gen().head())
+print(temp_gen().head())

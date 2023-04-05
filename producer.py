@@ -1,8 +1,19 @@
-from numpy import random
+from confluent_kafka import Producer
 import pandas as pd
-import h3 
+import json
+from numpy import random
 from datetime import datetime, timedelta 
 
+
+p = Producer({'bootstrap.servers': 'localhost:9092'})
+# df = pd.DataFrame(data = {"id":[1, 2, 3, 4], "name":["a", "s", "v", "d"]})  
+# df = ["1","2","3","4"]
+
+def upload_report(err, msg):
+    if err is not None:
+        print('Message upload failed: {}'.format(err))
+    else:
+        print('Message upload to {} [{}]'.format(msg.topic(), msg.partition()))
 
 # temp generation
 def main():
@@ -43,4 +54,13 @@ def hash_func(arr):
         ans.append(hashed_i)
     return ans
 
-main().to_json('out.json')
+df = main()
+send = json.dumps(df.to_json())
+
+# поменять топик
+print(df)
+p.poll(0)
+p.produce(send, send.encode('utf-8'), callback=upload_report)
+
+p.flush()
+

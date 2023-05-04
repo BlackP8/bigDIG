@@ -1,0 +1,11 @@
+version: "2.17.2"
+services:
+  postgres:
+    image: postgres:13.3
+    environment:
+      POSTGRES_DB: "airflow"
+      POSTGRES_USER: "bnn"
+      POSTGRES_PASSWORD: "bnn"
+    ports:
+      - 1234:5432
+    container_name: dbforairflow

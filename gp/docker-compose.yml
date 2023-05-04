@@ -1,0 +1,7 @@
+version: "3"
+services:
+  postgres:
+    image: coralrain/greenplum:latest
+    ports:
+      - 8181:5432
+    container_name: gpbd

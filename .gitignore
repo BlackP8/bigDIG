@@ -1,1 +1,13 @@
 out.csv
+?airflow/dags/cool_file.csv
+**/airflow/dags/lab3.py
+**/airflow/dags/my_test_dag.py
+**/aiflow/logs/
+test/
+*/__pycache__/
+kafak/__pycache__/
+airflow/dags/__pycache__/
+**/logs
+**.csv
+*out.json
+**.env

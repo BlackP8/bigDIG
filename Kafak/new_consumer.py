@@ -20,4 +20,4 @@ for message in consumer:
         connection.commit()
         print('Successful insert')
 
-connection.close()
+# connection.close()

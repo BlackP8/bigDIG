@@ -15,10 +15,9 @@ def select_query(**kwargs):
     print('postgres connect success')
     cursor = conn.cursor()
     df = pd.read_sql('select * from public.stg;', conn)
-    cursor.execute('delete from public.stg;')
+    cursor.execute('truncate only public.stg;')
     conn.commit()
     conn.close()
-    print(df)
     df = df.astype({'temperature': 'int32'})
     df_to_load = df[df['temperature'] >= 0]
     json_df = df_to_load.to_json()
@@ -26,7 +25,6 @@ def select_query(**kwargs):
 
 def insert_into_dds(json_df):
     df = pd.read_json(json_df)
-    print(df)
     pg_hook = PostgresHook(postgres_conn_id='posscon')
     conn = pg_hook.get_conn()
     print('postgres connect success')

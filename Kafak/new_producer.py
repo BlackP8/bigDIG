@@ -8,7 +8,11 @@ from conf import kafka_conn, kafka_topic
 from time import sleep
 
 
+<<<<<<< HEAD
 def main():
+=======
+def main(last_id):
+>>>>>>> 97b8359fff2ffadab12e64a60cb30cd0fd5fd56b
     utc_code = [2, 3, 3, 5, 5, 7, 8, 9, 10, 11]
     date_list = date_scan(utc_code)
     # id_list = id_gen(last_id)
@@ -72,11 +76,19 @@ producer = KafkaProducer(
 # last_id = '1120ddfs'
 
 while True:
+<<<<<<< HEAD
     df = main()
+=======
+    df = main(last_id)
+>>>>>>> 97b8359fff2ffadab12e64a60cb30cd0fd5fd56b
 
     for index, row in df.iterrows():
         print(f'Producing message @ {datetime.now()} | Message = {str(row)}')
         producer.send(kafka_topic, row.to_json())
+<<<<<<< HEAD
         # last_id = row[1]
+=======
+        last_id = row[1]
+>>>>>>> 97b8359fff2ffadab12e64a60cb30cd0fd5fd56b
         
     sleep(1)

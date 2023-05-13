@@ -23,3 +23,8 @@
     └─📄 README.md
 
 # Архитектура проекта
+<<<<<<< HEAD
+=======
+
+![Схема](https://github.com/BlackP8/bigDIG/blob/main/ар.jpg)
+>>>>>>> 97b8359fff2ffadab12e64a60cb30cd0fd5fd56b
